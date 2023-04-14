@@ -1,0 +1,53 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  color: #3022fa;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #655bf8;
+  margin-top: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #666;
+  margin-top: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+figcaption {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+li {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+}

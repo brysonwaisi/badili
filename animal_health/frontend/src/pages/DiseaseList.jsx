@@ -1,26 +1,27 @@
 import { useState, useEffect } from "react";
+import DiseaseForm from "../components/form/DiseaseForm";
+import { getDiseases } from "../service/DiseaseService";
 
 const DiseaseList = () => {
   const [diseases, setDiseases] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
-    getDiseases();
-  }, []);
-
-  let getDiseases = async () => {
-    let res = await fetch("http://127.0.0.1:8000/api/diseases/");
-    let data = await res.json();
-    console.log(data);
-    setDiseases(data);
-  };
+    getDiseases().then((data) => {
+      if (diseases.length && !isUpdated) {
+        return;
+      }
+      console.log(data);
+      setDiseases(data);
+    });
+    setIsUpdated(false);
+  }, [isUpdated, diseases]);
 
   return (
-    <div>
-      <div className="disease-list">
-        {diseases.map((disease, index) => (
-          <h3 key={index}>{disease.death_rate}</h3>
-        ))}
-      </div>
+    <div className="disease-list">
+      {diseases.map((disease) => (
+        <DiseaseForm key={disease.id} disease={disease} />
+      ))}
     </div>
   );
 };

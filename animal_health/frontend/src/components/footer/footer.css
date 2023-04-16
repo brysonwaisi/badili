@@ -1,0 +1,36 @@
+footer {
+  background-color: #f9f9fc;
+  color: #0e0101;
+
+  padding: 3em 0;
+}
+
+p {
+  color: rgb(19, 0, 0);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.socials {
+  margin: 3em 0;
+}
+
+.socials img:not(:first-child) {
+  margin-left: 1em;
+  background-color: blueviolet;
+}
+
+.community_help,
+.about {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.footer_links {
+  color: rgb(12, 1, 1);
+  text-decoration: none;
+}

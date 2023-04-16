@@ -1,20 +1,22 @@
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   display: flex;
   height: 100vh;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 h2 {
   font-size: 2rem;
   font-weight: normal;
-  color: #3022fa;
+  color: #0a0733;
   margin-top: 2rem;
 }
 
 h3 {
   font-size: 1.5rem;
   font-weight: normal;
-  color: #655bf8;
+  color: #1b1844;
   margin-top: 1.5rem;
 }
 

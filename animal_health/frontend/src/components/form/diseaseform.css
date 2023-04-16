@@ -4,6 +4,8 @@
   justify-content: center;
   width: 100vw;
   height: 160vh;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 form {

@@ -11,7 +11,6 @@ const DiseaseList = () => {
       if (diseases.length && !isUpdated) {
         return;
       }
-      console.log(data);
       setDiseases(data);
     });
     setIsUpdated(false);

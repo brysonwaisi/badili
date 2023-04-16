@@ -3,6 +3,8 @@ from django.http.response import JsonResponse, Http404
 from .serializers import DiseaseSerializer
 from .models import Diseases
 from rest_framework.response import Response
+from django.utils.translation import gettext as _
+from django.utils.translation import gettext, get_language, activate
 
 
 # Create your views here.

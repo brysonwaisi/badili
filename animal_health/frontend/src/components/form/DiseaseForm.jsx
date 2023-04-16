@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { addDisease } from "../../service/DiseaseService";
 import "./diseaseform.css";
+import { useTranslation } from "react-i18next";
 
 const modules = {
   toolbar: [
@@ -20,6 +21,7 @@ const modules = {
 };
 
 const DiseaseForm = (props) => {
+  const { t, i18n } = useTranslation(["form"]);
   const [formData, setFormData] = useState({
     name: "",
     local_names: "",
@@ -52,7 +54,6 @@ const DiseaseForm = (props) => {
     event.preventDefault();
     addDisease(event.target).then(
       (res) => {
-        console.log(res);
         props.setUpdated(true);
       },
       (err) => {
@@ -61,18 +62,17 @@ const DiseaseForm = (props) => {
     );
   };
 
-  const handleLanguageChange = (event) => {
-    setFormData({
-      ...formData,
-      language: event.target.value,
-    });
+  const handleLanguageChange = (e) => {
+    const selectedLang = e.target.value;
+    i18n.changeLanguage(selectedLang);
+    localStorage.setItem("i18nextLng", selectedLang);
   };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">{t("name")}:</label>
           <input
             type="text"
             id="name"
@@ -82,7 +82,7 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="local_names">Local Names:</label>
+          <label htmlFor="local_names">{t("local names")}:</label>
           <input
             type="text"
             id="local_names"
@@ -93,7 +93,7 @@ const DiseaseForm = (props) => {
         </div>
         <div>
           <label htmlFor="other_livestock_affected">
-            Other Livestock Affected:
+            {t("other livestock affected")}:
           </label>
           <input
             type="text"
@@ -104,7 +104,7 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="transmission">Transmission:</label>
+          <label htmlFor="transmission">{t("transmission")}:</label>
           <input
             type="text"
             id="transmission"
@@ -114,7 +114,7 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="number_affected">Number Affected in a herd:</label>
+          <label htmlFor="number_affected">{t("number affected")}:</label>
           <input
             type="number"
             id="number_affected"
@@ -124,7 +124,7 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="death_rate">Death Rate:</label>
+          <label htmlFor="death_rate">{t("death rate")}:</label>
           <input
             type="text"
             id="death_rate"
@@ -134,7 +134,9 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="predisposing_factors">Predisposing Factors:</label>
+          <label htmlFor="predisposing_factors">
+            {t("predisposing factors")}:
+          </label>
           <ReactQuill
             theme="snow"
             id="predisposing_factors"
@@ -147,7 +149,7 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="key_signs">Key signs of the disease:</label>
+          <label htmlFor="key_signs">{t("key signs of the disease")}:</label>
           <ReactQuill
             theme="snow"
             id="key_signs"
@@ -158,7 +160,7 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="other_signs">Other signs:</label>
+          <label htmlFor="other_signs">{t("other signs")}:</label>
           <ReactQuill
             theme="snow"
             id="other_signs"
@@ -169,7 +171,7 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="prevention">Prevention:</label>
+          <label htmlFor="prevention">{t("prevention")}:</label>
           <ReactQuill
             theme="snow"
             id="prevention"
@@ -180,15 +182,15 @@ const DiseaseForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="language">Language:</label>
+          <label htmlFor="language">{t("language")}:</label>
           <select
             id="language"
             name="language"
-            value={formData.language}
+            value={localStorage.getItem("i18nextLng")}
             onChange={handleLanguageChange}
           >
-            <option value="English">English</option>
-            <option value="Kiswahili">Kiswahili</option>
+            <option value="en">English</option>
+            <option value="sw">Swahili</option>
           </select>
         </div>
         <button type="submit">Submit</button>
